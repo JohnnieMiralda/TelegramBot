@@ -1,0 +1,11 @@
+2020-11-12 16:17:15,905 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:16,489 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:17,032 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:17,867 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:18,712 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:19,449 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:20,047 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:20,593 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:21,153 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:17:21,765 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - Bot needed to print usage
+2020-11-12 16:58:07,440 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
