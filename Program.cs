@@ -67,7 +67,7 @@ namespace TelegramBot
         {
 
             //Token del bot de la clase: 1405453733:AAHu9DKWnQCIymcrRKwiObzwrdbFfNDl0do
-            botClient = new TelegramBotClient("1073045363:AAGj36rMsGOP_DfyxMUC-ihNeEjCaA_ra3M");
+            botClient = new TelegramBotClient("1405453733:AAHu9DKWnQCIymcrRKwiObzwrdbFfNDl0do");
 
             var me = botClient.GetMeAsync().Result;
             Console.Title = me.Username;
@@ -84,6 +84,8 @@ namespace TelegramBot
             Console.ReadKey();
 
             botClient.StopReceiving();
+            log.Info("Bot Stopped");
+
         }
 
         static void BotOnReceiveError(object sender, ReceiveErrorEventArgs e)
@@ -104,6 +106,7 @@ namespace TelegramBot
             {
 
                 DiaCirculacionAsync(callbackQuery);
+                log.Info("Circulation date ");
 
             }
             else if (callbackQuery.Data == "AutoEvaluate")
@@ -121,7 +124,7 @@ namespace TelegramBot
                       "/start - ejecuta los comandos COVID 19\n" +
                       "/circulacion - muestra los dias de circulación\n" +
                       "/stats - muestra las estadisticas de COVID 19\n" +
-                      "/evaluate - muestra una serie de preguntas sobre los sintomas que padeces\n" +
+                      "/evaluate - muestra una serie de preguntas sobre los síntomas que padeces\n" +
                       "/recomendaciones - muestra una serie de recomendaciones para prevenir el COVID 19\n"
                 );
 
@@ -133,8 +136,8 @@ namespace TelegramBot
                   chatId: callbackQuery.Message.Chat.Id,
                   text: "Consejos para prevenir COVID-19\n" +
                         "1. Utiliza constantemente alcohol en gel\n" +
-                        "2. Toma abundante agua y cuida tu alimentación para que mantengas tu sistema inmunologico fortalecido\n" +
-                        "3. Si tienes algún sintoma busca un medio y comunicate con tu supervisor\n" +
+                        "2. Toma abundante agua y cuida tu alimentación para que mantengas tu sistema inmunológico fortalecido\n" +
+                        "3. Si tienes algún síntoma busca un medio y comunicate con tu supervisor\n" +
                         "4. No saludes de mano o beso a las personas\n" +
                         "5. Lávate las manos frecuentemente con agua y jabón\n" +
                         "6. Limpia y desinfecta las superficies y objetos de uso común\n" +
@@ -361,7 +364,7 @@ namespace TelegramBot
 
      });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Has viajado en los ultimos 14 dias fuera del país/estado?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Has viajado en los últimos 14 días fuera del país/estado?", replyMarkup: respuestas);
             //TerceraPregunta(callbackQuery);
         }
 
@@ -471,7 +474,7 @@ namespace TelegramBot
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te cuest trabajo respirar?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te cuesta trabajo respirar?", replyMarkup: respuestas);
             //OctavaPregunta(callbackQuery);
         }
 
@@ -537,7 +540,7 @@ namespace TelegramBot
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, nausea o vomito?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, náusea o vomito?", replyMarkup: respuestas);
             //OnceavaPregunta(callbackQuery);
         }
 
@@ -586,11 +589,11 @@ namespace TelegramBot
                     "* Enfermedades cardiovasculares\n" +
                     "* Hipertensión arterial\n" +
                     "* Diabetes\n" +
-                    "* Enfermedades respiratorias (pulmonar, cronica, asma)\n" +
-                    "* Insuficiencia renal cronica\n" +
-                    "* Cancer\n" +
+                    "* Enfermedades respiratorias (pulmonar, crónica, asma)\n" +
+                    "* Insuficiencia renal crónica\n" +
+                    "* Cáncer\n" +
                     "* Obesidad\n" +
-                    "* Enfermedad o tratamiento immunosupresor", replyMarkup: respuestas
+                    "* Enfermedad o tratamiento inmunosupresor", replyMarkup: respuestas
             );
         }
 
@@ -661,8 +664,9 @@ namespace TelegramBot
                 await botClient.SendPhotoAsync(
                   chatId: callbackQuery.Message.Chat,
                   photo: "https://hhp-blog.s3.amazonaws.com/2020/08/GettyImages-1216575896.jpg",
-                  caption: $"Tienes un {positivo}% de probabilidad que estes contagiado. Por favor atiende a tu medico mas cercano."
+                  caption: $"Tienes un {positivo}% de probabilidad que estés contagiado. Por favor atiende a tu médico más cercano."
                 );
+                log.Warn($"User gave positive {callbackQuery.Message.Chat.Username}");
 
             }
             else
@@ -673,7 +677,7 @@ namespace TelegramBot
                 await botClient.SendPhotoAsync(
                   chatId: callbackQuery.Message.Chat,
                   photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/06/15/15922327273752.jpg",
-                  caption: $"Tienes un {negativo}% de que no estes contagiado. Sigue cuidandote!"
+                  caption: $"Tienes un {negativo}% de que no estés contagiado. Sigue cuidándote!"
                 );
 
             }
