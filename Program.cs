@@ -342,7 +342,7 @@ namespace TelegramBot
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Como te sientes hoy?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Cómo te sientes hoy?", replyMarkup: respuestas);
         }
 
         static async void SegundaPregunta(CallbackQuery callbackQuery)
@@ -518,7 +518,7 @@ namespace TelegramBot
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes perdida de sentido del gusto u olfato?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes pérdida de sentido del gusto u olfato?", replyMarkup: respuestas);
             //DecimaPregunta(callbackQuery);
         }
 
@@ -540,7 +540,7 @@ namespace TelegramBot
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, náusea o vomito?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, náusea o vómito?", replyMarkup: respuestas);
             //OnceavaPregunta(callbackQuery);
         }
 
@@ -677,7 +677,7 @@ namespace TelegramBot
                 await botClient.SendPhotoAsync(
                   chatId: callbackQuery.Message.Chat,
                   photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/06/15/15922327273752.jpg",
-                  caption: $"Tienes un {negativo}% de que no estés contagiado. Sigue cuidándote!"
+                  caption: $"Tienes un {negativo}% de que no estés contagiado. ¡Sigue cuidándote!"
                 );
 
             }
