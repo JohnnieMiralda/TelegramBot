@@ -179,6 +179,7 @@ namespace TelegramBot
                 {
                     Console.WriteLine("\nException Caught!");
                     Console.WriteLine("Message :{0} ", e.Message);
+                    log.Error(e.Message);
                 }
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "https://news.google.com/covid19/map?hl=es-419&gl=US&ceid=US%3Aes-419");
             }
@@ -204,6 +205,7 @@ namespace TelegramBot
                 {
                     Console.WriteLine("\nException Caught!");
                     Console.WriteLine("Message :{0} ", e.Message);
+                    log.Error(e.Message);
                 }
                 await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "https://covid19honduras.org/");
             }
