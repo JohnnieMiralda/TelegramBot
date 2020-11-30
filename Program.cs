@@ -7,7 +7,8 @@ using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
-
+using System.Net.Http;
+using Newtonsoft.Json;
 /*
 namespace TelegramBot
 {
@@ -63,6 +64,8 @@ namespace TelegramBot
         static double contadorSI = 0;
         static double contadorNO = 0;
         private static readonly log4net.ILog log = LogHelper.GetLoggger();
+        static readonly HttpClient client = new HttpClient();
+        
         static void Main()
         {
 
@@ -93,6 +96,22 @@ namespace TelegramBot
             Console.WriteLine($"botClient>> Error recibido: " + e.ApiRequestException.Message);
         }
 
+        static async void EstadisticaAsync(CallbackQuery callbackQuery)
+        {
+
+
+            var Estadisticas = new InlineKeyboardMarkup(new[]{
+              new []{
+                InlineKeyboardButton.WithCallbackData(
+                  text:"Internacionales",
+                  callbackData: "EInter"),
+                  InlineKeyboardButton.WithCallbackData(
+                    text:"Nacionales",
+                    callbackData: "ENac")
+              }
+              });
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Que desea ver?", replyMarkup: Estadisticas);
+        }
         public static async void BotOnCallbackQueryRecieved(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
             var callbackQuery = callbackQueryEventArgs.CallbackQuery;
@@ -132,29 +151,68 @@ namespace TelegramBot
             else if (callbackQuery.Data == "prevenir")
             {
 
-                await botClient.SendTextMessageAsync(
-                  chatId: callbackQuery.Message.Chat.Id,
-                  text: "Consejos para prevenir COVID-19\n" +
-                        "1. Utiliza constantemente alcohol en gel\n" +
-                        "2. Toma abundante agua y cuida tu alimentación para que mantengas tu sistema inmunológico fortalecido\n" +
-                        "3. Si tienes algún síntoma busca un medio y comunicate con tu supervisor\n" +
-                        "4. No saludes de mano o beso a las personas\n" +
-                        "5. Lávate las manos frecuentemente con agua y jabón\n" +
-                        "6. Limpia y desinfecta las superficies y objetos de uso común\n" +
-                        "7. Evita tocar tus ojos, nariz y boca sin haberte lavado las manos\n" +
-                        "8. Cubre tu nariz y boca con el antebrazo o con un pañuelo desechable al estornudar o toser"
-                );
+                await botClient.SendPhotoAsync(
+                chatId: callbackQuery.Message.Chat,
+                photo: "https://lh3.googleusercontent.com/proxy/lksd8u7-Ie9m8LSj5ck1eBHHSYqBNtylQQqaPuerMSOE2PeL0anfDrvalemgzQ4ZbnZ84ImzcWgXPN07ecnwS8cRtZIFuePe9w",
+                caption: ""
+              );
 
             }
-            else
+            if (callbackQuery.Data == "EInter")
             {
-
-                await botClient.AnswerCallbackQueryAsync(
-                  callbackQueryId: callbackQuery.Id,
-                  text: ""
-                );
-
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync("https://api.covid19api.com/summary");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    dynamic obj = JsonConvert.DeserializeObject(responseBody);
+                    await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id,
+                        "Estadisticas Internacionales" +
+                        "\nNuevos Casos Confirmados: " + obj.Global.NewConfirmed +
+                        "\nTotal Casos Confirmados: " + obj.Global.TotalConfirmed +
+                        "\nNuevos Muertos: " + obj.Global.NewDeaths +
+                        "\nTotal Muertos: " + obj.Global.TotalDeaths +
+                        "\nNuevos Recuperados: " + obj.Global.NewRecovered +
+                        "\nTotal Recuperados: " + obj.Global.TotalRecovered);
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", e.Message);
+                }
+                await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "https://news.google.com/covid19/map?hl=es-419&gl=US&ceid=US%3Aes-419");
             }
+            else if (callbackQuery.Data == "ENac")
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync("https://api.covid19api.com/summary");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    dynamic obj = JsonConvert.DeserializeObject(responseBody);
+                    await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id,
+                        "Estadisticas Nacionales" +
+                        "\nNuevos Casos Confirmados: " + obj.Countries[73].NewConfirmed +
+                        "\nTotal Casos Confirmados: " + obj.Countries[73].TotalConfirmed +
+                        "\nNuevos Muertos: " + obj.Countries[73].NewDeaths +
+                        "\nTotal Muertos: " + obj.Countries[73].TotalDeaths +
+                        "\nNuevos Recuperados: " + obj.Countries[73].NewRecovered +
+                        "\nTotal Recuperados: " + obj.Countries[73].TotalRecovered);
+
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", e.Message);
+                }
+                await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "https://covid19honduras.org/");
+            }
+
+            else if (callbackQuery.Data == "Estadisticas")
+            {
+                EstadisticaAsync(callbackQuery);
+            }
+
 
             //PERDON INGE POR SER LA VERGA HACIENDO CODIGO!! FIJO ESTA MIERDA NO ES MANTENIBLE
             if (callbackQuery.Data == "si1")
@@ -617,9 +675,9 @@ namespace TelegramBot
                     callbackData: "AutoEvaluate")
               },
               new []{
-                InlineKeyboardButton.WithUrl(
+                InlineKeyboardButton.WithCallbackData(
                   text:"Estadísticas \U0001F4C8",
-                  url: "https://www.google.com/search?q=coronavirus+statistics&oq=coronavirus+st&aqs=chrome.0.0i67j69i57j0l6.6211j0j4&sourceid=chrome&ie=UTF-8"),
+                  callbackData: "Estadisticas"),
                 InlineKeyboardButton.WithCallbackData(
                   text:"Prevenir COVID-19\U0001F637",
                   callbackData: "prevenir")
