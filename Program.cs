@@ -151,11 +151,15 @@ namespace TelegramBot
             else if (callbackQuery.Data == "prevenir")
             {
 
-                await botClient.SendPhotoAsync(
-                chatId: callbackQuery.Message.Chat,
+                // Manda la imagen de prevencion de covid
+              await botClient.SendPhotoAsync(
+                chatId:  callbackQuery.Message.Chat,
                 photo: "https://lh3.googleusercontent.com/proxy/lksd8u7-Ie9m8LSj5ck1eBHHSYqBNtylQQqaPuerMSOE2PeL0anfDrvalemgzQ4ZbnZ84ImzcWgXPN07ecnwS8cRtZIFuePe9w",
                 caption: ""
               );
+
+              // Muestra las otras opciones de prevencion
+              NewMenu(callbackQuery);
 
             }
             if (callbackQuery.Data == "EInter")
@@ -215,8 +219,7 @@ namespace TelegramBot
                 EstadisticaAsync(callbackQuery);
             }
 
-
-            //PERDON INGE POR SER LA VERGA HACIENDO CODIGO!! FIJO ESTA MIERDA NO ES MANTENIBLE
+            // Condicionales para llevar la cuenta de las respuestas de doctor covid
             if (callbackQuery.Data == "si1")
             {
                 contadorSI++;
@@ -262,6 +265,8 @@ namespace TelegramBot
                 contadorSI++;
             }
 
+
+            // Condicionales para llevar la cuenta de las respuestas de doctor covid
             if (callbackQuery.Data == "no1")
             {
                 contadorNO++;
@@ -308,6 +313,7 @@ namespace TelegramBot
             }
 
             // CONDIICONALES DEL DOCTOR COVID
+            // Muestra las preguntas a medida se van respondiendo
             if (callbackQuery.Data == "bien" || callbackQuery.Data == "mal")
             {
                 SegundaPregunta(callbackQuery);
@@ -371,6 +377,41 @@ namespace TelegramBot
 
             }
 
+            if(callbackQuery.Data == "WashHands"){
+                
+                await botClient.SendPhotoAsync(
+                  chatId: callbackQuery.Message.Chat.Id,
+                  photo: "https://scontent.fsap7-1.fna.fbcdn.net/v/t1.0-9/89233379_1442355212599590_8952188415965659136_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=tCPGqwB9C7AAX8qS_Bm&_nc_ht=scontent.fsap7-1.fna&oh=1b43eb029d58c6a93ef6beece3844d73&oe=5FF318DC",
+                  caption: ""
+                );
+
+              }else if(callbackQuery.Data == "Contagio"){
+
+                await botClient.SendPhotoAsync(
+                  chatId: callbackQuery.Message.Chat.Id,
+                  photo: "https://pbs.twimg.com/media/ETFQB13WoAAiI6S?format=jpg&name=large",
+                  caption: ""
+                );
+
+              }else if(callbackQuery.Data == "hogar"){
+
+                await botClient.SendPhotoAsync(
+                  chatId: callbackQuery.Message.Chat.Id,
+                  photo: "https://pbs.twimg.com/media/ETerAI5XQAYTU7E?format=jpg&name=900x900",
+                  caption: ""
+                );
+
+              }else if(callbackQuery.Data == "cincoPasos"){
+
+                  await botClient.SendPhotoAsync(
+                  chatId: callbackQuery.Message.Chat.Id,
+                  photo: "https://lh3.googleusercontent.com/proxy/cvrtuZCVUr2tMZ5ITPwz5t0NfIe5g2aXw8Cc93zIGkKB5vW3bukqjSg1vYvWsRKkLPP0SFMBrj8Cu22CC7xkRWozkQYKXeMHzg",
+                  caption: ""
+                );
+
+              }
+
+
         }
 
         static async void DiaCirculacionAsync(CallbackQuery callbackQuery)
@@ -383,6 +424,7 @@ namespace TelegramBot
 
         }
 
+        
         static async void CuestionarioSintomas(CallbackQuery callbackQuery)
         {
 
@@ -391,18 +433,18 @@ namespace TelegramBot
         new[]{
 
           InlineKeyboardButton.WithCallbackData(
-            text:"Bien",
+            text:"Bien \U0001F603",
             callbackData: "bien"
           ),
           InlineKeyboardButton.WithCallbackData(
-            text:"Mal",
+            text:"Mal \U0001F625	",
             callbackData:"mal"
           )
         }
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Cómo te sientes hoy?", replyMarkup: respuestas);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Como te sientes hoy?", replyMarkup: respuestas);
         }
 
         static async void SegundaPregunta(CallbackQuery callbackQuery)
@@ -412,11 +454,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si1"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no1"
          )
 
@@ -424,8 +466,7 @@ namespace TelegramBot
 
      });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Has viajado en los últimos 14 días fuera del país/estado?", replyMarkup: respuestas);
-            //TerceraPregunta(callbackQuery);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Has viajado en los ultimos 14 dias fuera del país/estado?", replyMarkup: respuestas);
         }
 
         static async void TerceraPregunta(CallbackQuery callbackQuery)
@@ -435,11 +476,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si2"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no2"
          )
        }
@@ -447,7 +488,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Has tenido contacto directo con una persona diagnosticada con COVID-19?", replyMarkup: respuestas);
-            //CuartaPregunta(callbackQuery);
         }
 
         static async void CuartaPregunta(CallbackQuery callbackQuery)
@@ -457,11 +497,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si3"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no3"
          )
        }
@@ -469,7 +509,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes fiebre mayor a 37.5 grados?", replyMarkup: respuestas);
-            //QuintaPregunta(callbackQuery);
         }
 
         static async void QuintaPregunta(CallbackQuery callbackQuery)
@@ -479,11 +518,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si4"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no4"
          )
        }
@@ -491,7 +530,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te duele la garganta?", replyMarkup: respuestas);
-            //SextaPregunta(callbackQuery);
         }
 
         static async void SextaPregunta(CallbackQuery callbackQuery)
@@ -501,11 +539,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si5"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no5"
          )
        }
@@ -513,7 +551,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes tos seca y persistente?", replyMarkup: respuestas);
-            //SeptimaPregunta(callbackQuery);
         }
 
         static async void SeptimaPregunta(CallbackQuery callbackQuery)
@@ -523,19 +560,18 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si6"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no6"
          )
        }
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te cuesta trabajo respirar?", replyMarkup: respuestas);
-            //OctavaPregunta(callbackQuery);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te cuest trabajo respirar?", replyMarkup: respuestas);
         }
 
         static async void OctavaPregunta(CallbackQuery callbackQuery)
@@ -545,11 +581,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si7"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no7"
          )
        }
@@ -557,7 +593,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes dolor muscular, de cabeza, y/o de articulaciones?", replyMarkup: respuestas);
-            //NovenaPregunta(callbackQuery);
         }
 
         static async void NovenaPregunta(CallbackQuery callbackQuery)
@@ -567,19 +602,18 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si8"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no8"
          )
        }
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes pérdida de sentido del gusto u olfato?", replyMarkup: respuestas);
-            //DecimaPregunta(callbackQuery);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes perdida de sentido del gusto u olfato?", replyMarkup: respuestas);
         }
 
         static async void DecimaPregunta(CallbackQuery callbackQuery)
@@ -589,19 +623,18 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si9"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no9"
          )
        }
 
       });
 
-            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, náusea o vómito?", replyMarkup: respuestas);
-            //OnceavaPregunta(callbackQuery);
+            await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Tienes diarrea, nausea o vomito?", replyMarkup: respuestas);
         }
 
         static async void OnceavaPregunta(CallbackQuery callbackQuery)
@@ -611,11 +644,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si10"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no10"
          )
        }
@@ -623,7 +656,6 @@ namespace TelegramBot
       });
 
             await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "¿Te has hecho la prueba de COVID-19 \n (PCR, IgG, IgM)?", replyMarkup: respuestas);
-            //DoceavaPregunta(callbackQuery);
         }
 
         static async void DoceavaPregunta(CallbackQuery callbackQuery)
@@ -633,11 +665,11 @@ namespace TelegramBot
 
        new[]{
          InlineKeyboardButton.WithCallbackData(
-           text: "Sí",
+           text: "Sí \U0001F44D",
            callbackData: "si11"
          ),
          InlineKeyboardButton.WithCallbackData(
-            text: "No",
+            text: "No \U0001F44E",
             callbackData: "no11"
          )
        }
@@ -649,13 +681,14 @@ namespace TelegramBot
                     "* Enfermedades cardiovasculares\n" +
                     "* Hipertensión arterial\n" +
                     "* Diabetes\n" +
-                    "* Enfermedades respiratorias (pulmonar, crónica, asma)\n" +
-                    "* Insuficiencia renal crónica\n" +
-                    "* Cáncer\n" +
+                    "* Enfermedades respiratorias (pulmonar, cronica, asma)\n" +
+                    "* Insuficiencia renal cronica\n" +
+                    "* Cancer\n" +
                     "* Obesidad\n" +
-                    "* Enfermedad o tratamiento inmunosupresor", replyMarkup: respuestas
+                    "* Enfermedad o tratamiento immunosupresor", replyMarkup: respuestas
             );
         }
+
 
         static async void Bot_OnMessage(object sender, MessageEventArgs e)
         {
@@ -710,42 +743,48 @@ namespace TelegramBot
             double negativo = (contadorNO / 12) * 100;
             negativo = Math.Round(negativo, 2);
 
-            // Console.WriteLine($"Cantidad de si {contadorSI}");
-            // Console.WriteLine($"Cantidad de no {contadorNO}");
-            // Console.WriteLine($"Cantidad de positivo {positivo}");
-            // Console.WriteLine($"Cantidad de negativo {negativo}");
+          //Ponderacion del test
+            if(positivo >= negativo){
 
-            //Ponderacion del test
-            if (positivo >= negativo)
-            {
+              await botClient.SendPhotoAsync(
+                chatId:  callbackQuery.Message.Chat,
+                photo: "https://hhp-blog.s3.amazonaws.com/2020/08/GettyImages-1216575896-300x200.jpg",
+                caption: $"Tienes un {positivo}% de que no estes contagiado. Sigue cuidandote!"
+              );
 
-                Console.WriteLine($"Cantidad de positivo: {positivo}");
+            }else{
 
-                await botClient.SendPhotoAsync(
-                  chatId: callbackQuery.Message.Chat,
-                  photo: "https://hhp-blog.s3.amazonaws.com/2020/08/GettyImages-1216575896.jpg",
-                  caption: $"Tienes un {positivo}% de probabilidad que estés contagiado. Por favor atiende a tu médico más cercano."
-                );
-                log.Warn($"User gave positive {callbackQuery.Message.Chat.Username}");
+              Console.WriteLine($"Cantidad de negativo: {negativo}");
 
-            }
-            else
-            {
-
-                Console.WriteLine($"Cantidad de negativo: {negativo}");
-
-                await botClient.SendPhotoAsync(
-                  chatId: callbackQuery.Message.Chat,
-                  photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/06/15/15922327273752.jpg",
-                  caption: $"Tienes un {negativo}% de que no estés contagiado. ¡Sigue cuidándote!"
-                );
-
+              await botClient.SendPhotoAsync(
+                chatId:  callbackQuery.Message.Chat,
+                photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/06/15/15922327273752.jpg",
+                caption: $"Tienes un {negativo}% de que no estes contagiado. Sigue cuidandote!"
+              );
             }
 
-            contadorNO = 0;
-            contadorSI = 0;
+          contadorNO = 0;
+          contadorSI = 0;
 
         }
+
+            static async void NewMenu(CallbackQuery callbackQuery){
+
+            var respuestas = new InlineKeyboardMarkup(new[]{
+
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como lavarte las manos? ",callbackData: "WashHands") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como me puedo contagiar?",callbackData: "Contagio") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text:"¿Como protego mi hogar?", callbackData: "hogar") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text:"Los 5 Pasos para protegerse", callbackData: "cincoPasos") },
+
+            });
+
+          await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Prevención de COVID-19", replyMarkup: respuestas);
+          
+        }
+
+    }
+}
 
     }
 }
