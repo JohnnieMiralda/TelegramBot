@@ -1,23 +1,23 @@
-2020-11-29 17:56:36,999 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:56:39,019 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:56:40,861 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:56:42,789 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:58:16,554 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:58:54,499 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response Estadisticas
-2020-11-29 17:58:57,111 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response EInter
-2020-11-29 17:59:01,581 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response ENac
-2020-11-29 17:59:06,978 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response AutoEvaluate
-2020-11-29 17:59:09,898 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response bien
-2020-11-29 17:59:12,093 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si1
-2020-11-29 17:59:14,301 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no2
-2020-11-29 17:59:16,467 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si3
-2020-11-29 17:59:18,845 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si4
-2020-11-29 17:59:21,082 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no5
-2020-11-29 17:59:23,289 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si6
-2020-11-29 17:59:25,391 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no7
-2020-11-29 17:59:27,115 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si8
-2020-11-29 17:59:29,503 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no9
-2020-11-29 17:59:31,833 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si10
-2020-11-29 17:59:34,812 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si11
-2020-11-29 17:59:35,479 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] WARN - User gave positive Siumauriciio
-2020-11-29 17:59:47,856 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response prevenir
+2020-12-11 20:41:15,414 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no2
+2020-12-11 20:41:17,876 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no3
+2020-12-11 20:41:20,675 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no4
+2020-12-11 20:41:23,058 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no5
+2020-12-11 20:41:25,794 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no6
+2020-12-11 20:41:29,800 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no7
+2020-12-11 20:41:33,196 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no8
+2020-12-11 20:41:36,183 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no9
+2020-12-11 20:41:38,710 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response si10
+2020-12-11 20:41:48,110 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response no11
+2020-12-11 20:41:58,549 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response Circulacion
+2020-12-11 20:41:58,553 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Circulation date 
+2020-12-11 20:42:06,914 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response /help
+2020-12-12 02:33:26,722 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:33:55,733 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response prevenir
+2020-12-12 02:36:36,379 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:36:44,193 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response prevenir
+2020-12-12 02:39:22,463 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:39:35,143 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response prevenir
+2020-12-12 02:45:44,553 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:46:23,048 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:47:10,242 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - Bot Started
+2020-12-12 02:47:25,423 [C:\Users\JOHNNIE\source\repos\TelegramBot\TelegramBot\Program.cs] INFO - User response /help
