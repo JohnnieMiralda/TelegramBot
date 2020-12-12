@@ -74,9 +74,7 @@ namespace TelegramBot
 
             var me = botClient.GetMeAsync().Result;
             Console.Title = me.Username;
-            Console.WriteLine(
-              $"botClient>> Hola! Me llamo {me.FirstName}."
-            );
+            
             log.Info("Bot Started");
             botClient.OnMessage += Bot_OnMessage;
             botClient.OnCallbackQuery += BotOnCallbackQueryRecieved;
@@ -93,7 +91,7 @@ namespace TelegramBot
 
         static void BotOnReceiveError(object sender, ReceiveErrorEventArgs e)
         {
-            Console.WriteLine($"botClient>> Error recibido: " + e.ApiRequestException.Message);
+            log.Error($"Error recibido: " + e.ApiRequestException.Message);
         }
 
         static async void EstadisticaAsync(CallbackQuery callbackQuery)
@@ -116,7 +114,6 @@ namespace TelegramBot
         {
             var callbackQuery = callbackQueryEventArgs.CallbackQuery;
 
-            Console.WriteLine($"botClient:>> @{callbackQuery.Message.Chat.Username} seleccionó {callbackQuery.Data}");
             log.Info($"User response {callbackQuery.Data}");
             
 
@@ -125,7 +122,7 @@ namespace TelegramBot
             {
 
                 DiaCirculacionAsync(callbackQuery);
-                log.Info("Circulation date ");
+                log.Warn("Llamado a dia de circulacion");
 
             }
             else if (callbackQuery.Data == "AutoEvaluate")
@@ -419,7 +416,7 @@ namespace TelegramBot
 
             await botClient.SendTextMessageAsync(
               chatId: callbackQuery.Message.Chat.Id,
-              text: "¡¡¡Aqui va la informacion de los dias de circulación!!!"
+              text: "Estamos en mantenimiento intentalo mas tarde"
             );
 
         }
@@ -695,7 +692,7 @@ namespace TelegramBot
             if (e.Message.Text != null)
             {
 
-                Console.WriteLine($"botClient:>> Received a text message from @{e.Message.Chat.Username}:" + e.Message.Text);
+                log.Info($"Received a text message from @{e.Message.Chat.Username}:" + e.Message.Text);
 
                 if (e.Message.Text == "/start")
                 {
@@ -729,9 +726,13 @@ namespace TelegramBot
                       photo: "https://image.freepik.com/vector-gratis/coronavirus-covid-19-luchadores-02_126288-23.jpg",
                       caption: ""
                     );
-                    await botClient.SendTextMessageAsync(e.Message.Chat.Id, "Bienvenid@ al BOT COVID19HN \n Selecciona el comando a ejecutar", replyMarkup: BotonesHYD);
+                    await botClient.SendTextMessageAsync(e.Message.Chat.Id, $"Bienvenid@ {e.Message.Chat.Username}\n Selecciona el comando a ejecutar", replyMarkup: BotonesHYD);
                 }
+                else
+                {
+                    await botClient.SendTextMessageAsync(e.Message.Chat.Id, $"Bienvenid@ {e.Message.Chat.Username}, porfavor usa el comando /start");
 
+                }
             }
         }
 
@@ -754,8 +755,7 @@ namespace TelegramBot
 
             }else{
 
-              Console.WriteLine($"Cantidad de negativo: {negativo}");
-
+                log.Info($"Cantidad de negativo: {negativo}");
               await botClient.SendPhotoAsync(
                 chatId:  callbackQuery.Message.Chat,
                 photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/06/15/15922327273752.jpg",
@@ -772,19 +772,17 @@ namespace TelegramBot
 
             var respuestas = new InlineKeyboardMarkup(new[]{
 
-              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como lavarte las manos? ",callbackData: "WashHands") },
-              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como me puedo contagiar?",callbackData: "Contagio") },
-              new[]{ InlineKeyboardButton.WithCallbackData(text:"¿Como protego mi hogar?", callbackData: "hogar") },
-              new[]{ InlineKeyboardButton.WithCallbackData(text:"Los 5 Pasos para protegerse", callbackData: "cincoPasos") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como lavarte las manos? \U0001F9FC \U0001F44F ", callbackData: "WashHands") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como me puedo contagiar? \U0001F912", callbackData: "Contagio") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "¿Como protego mi hogar? \U0001F3E0", callbackData: "hogar") },
+              new[]{ InlineKeyboardButton.WithCallbackData(text: "Los 5 pasos para protegerse\U0001F637 ", callbackData: "cincoPasos") },
 
             });
 
-          await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Prevención de COVID-19", replyMarkup: respuestas);
+          await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Prevención de COVID-19 \U0001F9A0", replyMarkup: respuestas);
           
         }
 
     }
 }
 
-    }
-}
