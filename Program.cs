@@ -117,36 +117,28 @@ namespace TelegramBot
             log.Info($"User response {callbackQuery.Data}");
             
 
-            //CONDICIONALES DEL MENU INICIAL
-            if (callbackQuery.Data == "Circulacion")
+            if (callbackQuery.Data == "AutoEvaluate")
             {
 
-                DiaCirculacionAsync(callbackQuery);
-                log.Warn("Llamado a dia de circulacion");
+              var BotonesHYD = new InlineKeyboardMarkup(new[]{
+                new []{
+                    InlineKeyboardButton.WithCallbackData(
+                    text:"Examen Covid19",
+                    callbackData: "cuestionario"),
+                },new[]{InlineKeyboardButton.WithUrl(
+                    text:"Contactos de Emergencia \U0001F4F2",
+                    url: "http://cidbimena.desastres.hn/staticpages/index.php?page=20040607102806830#top")
+                },new[]{
+                    InlineKeyboardButton.WithUrl(
+                    text:"Noticias COVID19 \U0001F4F0",
+                    url: "https://www.google.com/search?q=noticias+covid+19+hoy&oq=noticias+covid19&aqs=chrome.2.69i57j0i10l7.5536j0j7&sourceid=chrome&ie=UTF-8")
+                }
+              });
 
-            }
-            else if (callbackQuery.Data == "AutoEvaluate")
-            {
+              await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Doctor COVID-19\n¿Que quieres hacer?", replyMarkup: BotonesHYD);              
+              
 
-                CuestionarioSintomas(callbackQuery);
-
-            }
-            else if (callbackQuery.Data == "/help")
-            {
-
-                await botClient.SendTextMessageAsync(
-                  chatId: callbackQuery.Message.Chat.Id,
-                  text: "Comandos:\n" +
-                      "/start - ejecuta los comandos COVID 19\n" +
-                      "/circulacion - muestra los dias de circulación\n" +
-                      "/stats - muestra las estadisticas de COVID 19\n" +
-                      "/evaluate - muestra una serie de preguntas sobre los síntomas que padeces\n" +
-                      "/recomendaciones - muestra una serie de recomendaciones para prevenir el COVID 19\n"
-                );
-
-            }
-            else if (callbackQuery.Data == "prevenir")
-            {
+            }else if (callbackQuery.Data == "prevenir"){
 
                 // Manda la imagen de prevencion de covid
               await botClient.SendPhotoAsync(
@@ -158,7 +150,11 @@ namespace TelegramBot
               // Muestra las otras opciones de prevencion
               NewMenu(callbackQuery);
 
+            }else if(callbackQuery.Data == "cuestionario"){
+                CuestionarioSintomas(callbackQuery);
             }
+            
+            
             if (callbackQuery.Data == "EInter")
             {
                 try
@@ -699,25 +695,17 @@ namespace TelegramBot
 
                     var BotonesHYD = new InlineKeyboardMarkup(new[]{
               new []{
-                InlineKeyboardButton.WithCallbackData(
-                  text:"Días de Circulación HN\U0001F699",
-                  callbackData: "Circulacion"),
+                  InlineKeyboardButton.WithCallbackData(
+                  text:"Recomendaciones \U0001F637",
+                  callbackData: "prevenir"),
                   InlineKeyboardButton.WithCallbackData(
                     text:"Doctor COVID-19 \U0001F9D1",
                     callbackData: "AutoEvaluate")
               },
               new []{
-                InlineKeyboardButton.WithCallbackData(
+                InlineKeyboardButton.WithUrl(
                   text:"Estadísticas \U0001F4C8",
-                  callbackData: "Estadisticas"),
-                InlineKeyboardButton.WithCallbackData(
-                  text:"Prevenir COVID-19\U0001F637",
-                  callbackData: "prevenir")
-              },
-              new[]{
-                InlineKeyboardButton.WithCallbackData(
-                  text:"Ayuda \U0001F6A8",
-                  callbackData:"/help")
+                  url: "https://www.google.com/search?q=coronavirus+statistics&oq=coronavirus+st&aqs=chrome.0.0i67j69i57j0l6.6211j0j4&sourceid=chrome&ie=UTF-8")
               }
           });
 
