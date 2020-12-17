@@ -703,9 +703,9 @@ namespace TelegramBot
                     callbackData: "AutoEvaluate")
               },
               new []{
-                InlineKeyboardButton.WithUrl(
+                InlineKeyboardButton.WithCallbackData(
                   text:"Estadísticas \U0001F4C8",
-                  url: "https://www.google.com/search?q=coronavirus+statistics&oq=coronavirus+st&aqs=chrome.0.0i67j69i57j0l6.6211j0j4&sourceid=chrome&ie=UTF-8")
+                  callbackData: "Estadisticas")
               }
           });
 
