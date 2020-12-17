@@ -56,6 +56,10 @@ namespace TelegramBot
 }
 */
 
+  /*
+    Buena pagina para conseguir informacion: https://covid19honduras.org/
+  */
+
 namespace TelegramBot
 {
     class Program
@@ -166,9 +170,9 @@ namespace TelegramBot
                     await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id,
                         "Estadisticas Internacionales" +
                         "\nNuevos Casos Confirmados: " + obj.Global.NewConfirmed +
-                        "\nTotal Casos Confirmados: " + obj.Global.TotalConfirmed +
-                        "\nNuevos Muertos: " + obj.Global.NewDeaths +
-                        "\nTotal Muertos: " + obj.Global.TotalDeaths +
+                        "\nCasos Totales Confirmados: " + obj.Global.TotalConfirmed +
+                        "\nFallecidos: " + obj.Global.NewDeaths +
+                        "\nTotal Fallecidos: " + obj.Global.TotalDeaths +
                         "\nNuevos Recuperados: " + obj.Global.NewRecovered +
                         "\nTotal Recuperados: " + obj.Global.TotalRecovered);
                 }
@@ -191,9 +195,9 @@ namespace TelegramBot
                     await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id,
                         "Estadisticas Nacionales" +
                         "\nNuevos Casos Confirmados: " + obj.Countries[73].NewConfirmed +
-                        "\nTotal Casos Confirmados: " + obj.Countries[73].TotalConfirmed +
-                        "\nNuevos Muertos: " + obj.Countries[73].NewDeaths +
-                        "\nTotal Muertos: " + obj.Countries[73].TotalDeaths +
+                        "\nCasos Totales Confirmados: " + obj.Countries[73].TotalConfirmed +
+                        "\nFallecidos: " + obj.Countries[73].NewDeaths +
+                        "\nTotal Fallecidos: " + obj.Countries[73].TotalDeaths +
                         "\nNuevos Recuperados: " + obj.Countries[73].NewRecovered +
                         "\nTotal Recuperados: " + obj.Countries[73].TotalRecovered);
 
